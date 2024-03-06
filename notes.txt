@@ -1,0 +1,3 @@
+- Yg background ada gambar bulu2nya gitu, dibikin heightnya 550px aja dit
+- Gambar kalo bisa yg HD, karna untuk slider di home ada beberapa yg ga HD
+- Kurang gambar untuk single product (bukan yg banner, untuk yg product satuannya)
