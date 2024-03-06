@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/favicon.ico">
 
     <title>Erha Acne</title>
 
@@ -35,7 +35,7 @@
     <aside class="aside aside-fixed">
       <div class="aside-header">
         <a href="#" class="aside-logo">
-          <img src="<?= base_url(); ?>assets/logo.PNG" alt="" width="150">
+          <img src="<?= base_url(); ?>assets/follow-me-black.PNG" alt="" width="150">
         </a>
         <a href="" class="aside-menu-link">
           <i data-feather="menu"></i>

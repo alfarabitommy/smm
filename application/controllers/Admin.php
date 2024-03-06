@@ -34,7 +34,8 @@ class Admin extends CI_Controller {
 
 			redirect(base_url().'admin/dashboard');
 		} else {
-			echo"<h3 align='center'>Ulangi Login</h3>";
+			$this->session->set_flashdata('login_error', 'Email atau password salah');
+			redirect(base_url().'admin');
 		}
 	}
 

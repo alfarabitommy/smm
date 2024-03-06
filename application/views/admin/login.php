@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/favicon.ico">
 
-    <title>Erha Acne</title>
+    <title>Follow Me | Social Media Panel - Login</title>
 
     <!-- vendor css -->
     <link href="<?= base_url(); ?>lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -26,13 +26,21 @@
         <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
           <div class="media-body align-items-center d-none d-lg-flex">
             <div class="mx-wd-600">
-              <img src="<?= base_url(); ?>assets/logo.PNG" class="img-fluid" alt="">
+              <img src="<?= base_url(); ?>assets/bg-login.png" class="img-fluid" alt="">
             </div>
           </div><!-- media-body -->
           <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60">
             <div class="wd-100p">
               <h3 class="tx-color-01 mg-b-5">Sign In</h3>
               <p class="tx-color-03 tx-16 mg-b-40">Welcome back! Please sign in to continue.</p>
+              
+              <!-- alert jika gagal login -->
+              <?php if ($this->session->flashdata('login_error')): ?>
+                  <div class="alert alert-danger" role="alert">
+                      <?= $this->session->flashdata('login_error') ?>
+                  </div>
+              <?php endif; ?>
+              
               <form action="<?= base_url();?>admin/proses_login" method="post">
                 <div class="form-group">
                   <label>Username</label>
@@ -51,6 +59,12 @@
         </div><!-- media -->
       </div><!-- container -->
     </div><!-- content -->
+
+    <footer class="footer">
+      <div>
+        <span>&copy;2024 Followme | Social Media Management Panel</span>
+      </div>
+    </footer>
 
     <script src="<?= base_url(); ?>lib/jquery/jquery.min.js"></script>
     <script src="<?= base_url(); ?>lib/bootstrap/js/bootstrap.bundle.min.js"></script>
