@@ -9,7 +9,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/img/favicon.ico">
 
-    <title>Erha Acne</title>
+    <title>Follow Me | Social Media Management Panel - Dashboard</title>
 
     <!-- vendor css -->
     <link href="<?= base_url(); ?>lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -49,10 +49,10 @@
           </div>
           <div class="aside-loggedin-user">
             <a href="#loggedinMenu" class="d-flex align-items-center justify-content-between mg-b-2" data-toggle="collapse">
-              <h6 class="tx-semibold mg-b-0">John Doe</h6>
+              <h6 class="tx-semibold mg-b-0"><?php echo $info; ?></h6>
               <i data-feather="chevron-down"></i>
             </a>
-            <p class="tx-color-03 tx-12 mg-b-0">Administrator</p>
+            <p class="tx-color-03 tx-12 mg-b-0">Digital Marketing</p>
           </div>
           <div class="collapse" id="loggedinMenu">
             <ul class="nav nav-aside mg-b-0">
@@ -62,16 +62,16 @@
         </div><!-- aside-loggedin -->
         <?php $uri = $this->uri->segment(2); ?>
         <ul class="nav nav-aside">
-          <li class="nav-label">Contents</li>
+          <li class="nav-label">Menu</li>
           <li class="nav-item <?= ($uri=='dashboard')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/dashboard/" class="nav-link"><i data-feather="home"></i> <span>Dashboard</span></a></li>
-          <li class="nav-item <?= ($uri=='sliders')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/sliders/" class="nav-link"><i data-feather="fast-forward"></i> <span>Sliders</span></a></li>
+          <!-- <li class="nav-item <?= ($uri=='sliders')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/sliders/" class="nav-link"><i data-feather="fast-forward"></i> <span>Sliders</span></a></li>
           <li class="nav-item <?= ($uri=='edit_about')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/edit_about/1" class="nav-link"><i data-feather="info"></i> <span>About</span></a></li>
           <li class="nav-item <?= ($uri=='products')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/products/" class="nav-link"><i data-feather="shopping-bag"></i> <span>Products</span></a></li>
           <li class="nav-item <?= ($uri=='whatsnew')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/whatsnew/" class="nav-link"><i data-feather="send"></i> <span>What's New</span></a></li>
           <li class="nav-item <?= ($uri=='videos')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/videos/" class="nav-link"><i data-feather="video"></i> <span>Videos</span></a></li>
           <li class="nav-item <?= ($uri=='acnefacts')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/acnefacts/" class="nav-link"><i data-feather="layout"></i> <span>Acnefacts</span></a></li>
           <li class="nav-item <?= ($uri=='customers')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/customers/" class="nav-link"><i data-feather="users"></i> <span>Customers</span></a></li>
-          <li class="nav-item <?= ($uri=='sliders')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/messages/" class="nav-link"><i data-feather="inbox"></i> <span>Messages</span></a></li>
+          <li class="nav-item <?= ($uri=='sliders')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/messages/" class="nav-link"><i data-feather="inbox"></i> <span>Messages</span></a></li> -->
           <!-- <li class="nav-label mg-t-25">Web Apps</li>
           <li class="nav-item"><a href="app-mail.html" class="nav-link"><i data-feather="settings"></i> <span>Site Settings</span></a></li> -->
         </ul>
