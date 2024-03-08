@@ -467,6 +467,7 @@
 
   const xValues = ['TikTok', 'Instagram'];
   const yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+  const barColors = ["#EE1D52", "#9F70FD"];
 
   new Chart("myChart", {
     type: "bar",
@@ -475,7 +476,7 @@
       datasets: [{
         fill: false,
         lineTension: 0,
-        backgroundColor: "#86A7FC",
+        backgroundColor: barColors,
         borderColor: "#86A7FC",
         data: yValues
       }]
@@ -487,8 +488,132 @@
       scales: {
         yAxes: [{
           ticks: {
-            min: 6,
-            max: 16
+            min: 0,
+            max: 50
+          }
+        }],
+      }
+    }
+  });
+
+  const x1Values = ['Glorious Moonlight', 'Senso di Blossom', 'Sunset Falvor', 'Brotherhood Story', 'Happy', 'Joyful', 'Romance'];
+  const y1Values = [18, 20, 10, 9, 9, 8, 15];
+  const barColors1 = ["#3C2612", "#F48CA6", "#D48E29", "#362721", "#FFF67E", "#9BCF53", "#9F70FD"];
+
+  new Chart("myChart1", {
+    type: "bar",
+    data: {
+      labels: x1Values,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: barColors1,
+        borderColor: "#86A7FC",
+        data: y1Values
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 50
+          }
+        }],
+      }
+    }
+  });
+
+  const x2Values = ['Yesi', 'Maulinda', 'Dhea', 'Dika'];
+  const y2Values = [10, 8, 8, 9];
+  const barColors2 = ["#B5C0D0", "#8E7AB5", "#070F2B", "#8CB9BD"];
+
+  new Chart("myChart2", {
+    type: "bar",
+    data: {
+      labels: x2Values,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: barColors2,
+        borderColor: "#86A7FC",
+        data: y2Values
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 30
+          }
+        }],
+      }
+    }
+  });
+
+  const x3Values = ['TikTok', 'Instagram'];
+  const y3Values = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+  const barColors3 = ["#EE1D52", "#9F70FD"];
+
+  new Chart("myChart3", {
+    type: "bar",
+    data: {
+      labels: x3Values,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: barColors,
+        borderColor: "#86A7FC",
+        data: y3Values
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 50
+          }
+        }],
+      }
+    }
+  });
+
+  const x4Values = ['Glorious Moonlight', 'Senso di Blossom', 'Brotherhood Story', 'Magic of Nature'];
+  const y4Values = [1, 3, 4, 4];
+  const barColors4 = ["#EE1D52", "#9F70FD"];
+
+  new Chart("myChart4", {
+    type: "pie",
+    data: {
+      labels: x4Values,
+      datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: barColors,
+        borderColor: "#86A7FC",
+        data: y4Values
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 50
           }
         }],
       }
