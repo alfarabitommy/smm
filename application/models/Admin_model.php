@@ -30,7 +30,7 @@ class Admin_model extends CI_Model
 	// model untuk panel iklan
 	public function getalliklans()
 	{
-		$sql = $this->db->query("select * from tbl_iklans");
+		$sql = $this->db->query("select *, datediff(periode_berakhir,periode_mulai) as periode from tbl_iklans");
 		$data = $sql->result_array();
 
 		return $data;
@@ -39,15 +39,16 @@ class Admin_model extends CI_Model
 	public function proses_add_iklan()
 	{
 		$date = date('Y-m-d H:i:s');
-
+		$start = str_replace("T"," ", $this->input->post('periode_mulai'));
+		$end = str_replace("T"," ",$this->input->post('periode_berakhir'));
 		$data_file = array(
 			'campaign_name' => $this->input->post('name'),
 			'anggaran' => $this->input->post('anggaran'),
 			'hasil' => $this->input->post('hasil'),
 			'jangkauan' => $this->input->post('jangkauan'),
 			'impresi' => $this->input->post('impresi'),
-			'periode_mulai' => $this->input->post('periode_mulai'),
-			'periode_berakhir' => $this->input->post('periode_berakhir'),
+			'periode_mulai' => $start,
+			'periode_berakhir' => $end,
 			'jumlah_dibelanjakan' => $this->input->post('jumlah_dibelanjakan'),
 			'date_created' => $date
 		);
@@ -68,14 +69,17 @@ class Admin_model extends CI_Model
 		$id = $this->input->post('id');
 		$date = date('Y-m-d H:i:s');
 
+		$start = str_replace("T"," ", $this->input->post('periode_mulai'));
+		$end = str_replace("T"," ",$this->input->post('periode_berakhir'));
+
 		$data_file = array(
 			'campaign_name' => $this->input->post('name'),
 			'anggaran' => $this->input->post('anggaran'),
 			'hasil' => $this->input->post('hasil'),
 			'jangkauan' => $this->input->post('jangkauan'),
 			'impresi' => $this->input->post('impresi'),
-			'periode_mulai' => $this->input->post('periode_mulai'),
-			'periode_berakhir' => $this->input->post('periode_berakhir'),
+			'periode_mulai' => $start,
+			'periode_berakhir' => $end,
 			'jumlah_dibelanjakan' => $this->input->post('jumlah_dibelanjakan'),
 			'date_updated' => $date
 		);

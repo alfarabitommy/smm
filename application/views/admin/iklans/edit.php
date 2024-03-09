@@ -1,3 +1,8 @@
+<?php
+$start=Date('Y-m-d\TH:i',strtotime($data[0]['periode_mulai']));
+$end=Date('Y-m-d\TH:i',strtotime($data[0]['periode_berakhir']));
+?>
+
 <div class="content-body">
         <div class="container pd-x-0">
           <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
@@ -42,11 +47,11 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="periode_mulai" class="d-block">Periode Mulai</label>
-                        <input name="periode_mulai" type="text" class="form-control" value="<?= $data[0]['periode_mulai'];?>">
+                        <input name="periode_mulai" type="datetime-local" class="form-control" value="<?= $start;?>">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="periode_berakhir" class="d-block">Periode Berakhir</label>
-                        <input name="periode_berakhir" type="text" class="form-control" value="<?= $data[0]['periode_berakhir'];?>">
+                        <input name="periode_berakhir" type="datetime-local" class="form-control" value="<?= $end;?>">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="jumlah_dibelanjakan" class="d-block">Jumlah Dibelanjakan</label>

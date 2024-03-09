@@ -29,6 +29,7 @@
                                 <th class="wd-10p">Jangkauan</th>
                                 <th class="wd-10p">Impresi</th>
                                 <th class="wd-10p">Periode</th>
+                                <th class="wd-10p">Biaya Per Hasil</th>
                                 <th class="wd-10p">Biaya</th>
                                 <th class="wd-10p">Aksi</th>
                             </tr>
@@ -46,6 +47,7 @@
                                     <td><?= $iklans[$i]['hasil']; ?></td>
                                     <td><?= $iklans[$i]['jangkauan']; ?></td>
                                     <td><?= $iklans[$i]['impresi']; ?></td>
+                                    <td><?= $iklans[$i]['periode']; ?></td>
                                     <td><?= $iklans[$i]['biaya_per_hasil']; ?></td>
                                     <td><?= $iklans[$i]['jumlah_dibelanjakan']; ?></td>
                                     <td>

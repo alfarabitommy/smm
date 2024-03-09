@@ -42,11 +42,11 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="periode_awal" class="d-block">Periode Awal</label>
-                        <input type="text" id="dateFrom" class="form-control hasDatepicker" placeholder="From">
+                        <input type="datetime-local" name="periode_mulai" id="dateFrom" class="form-control hasDatepicker" placeholder="From">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="periode_awal" class="d-block">Periode Akhir</label>
-                        <input type="text" id="dateTo" class="form-control hasDatepicker" placeholder="To">
+                        <input type="datetime-local" name="periode_berakhir" id="dateTo" class="form-control hasDatepicker" placeholder="To">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="jumlah_dibelanjakan" class="d-block">Biaya</label>
