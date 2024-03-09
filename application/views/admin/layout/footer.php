@@ -619,6 +619,22 @@
       }
     }
   });
+
+  $('#example1').DataTable({
+    responsive: true,
+    language: {
+      searchPlaceholder: 'Search...',
+      sSearch: '',
+      lengthMenu: '_MENU_ items/page',
+    }
+  });
+
+  $.noConflict();
+  jQuery(document).ready(function($) {
+    // Your datepicker initialization here
+    $('#dateFrom').datepicker();
+  });
+  
 </script>
 </body>
 

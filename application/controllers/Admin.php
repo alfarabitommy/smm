@@ -57,6 +57,66 @@ class Admin extends CI_Controller {
 		return $page;
 	}
 
+	// controller panel untuk ads/iklan
+	public function iklan()
+	{
+		$this->load->model('Admin_model','iklans');
+		$t['iklans'] = $this->iklans->getalliklans();
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/iklans/content',$t, true);
+
+		$page = $this->load->view('admin/master',$a);
+
+		return $page;
+	}
+
+	public function add_iklan()
+	{
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/iklans/add',$t, true);
+
+		$page = $this->load->view('admin/master',$a);
+
+		return $page;
+	}
+
+	public function edit_iklan()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->model('Admin_model','data_iklan');
+
+		$t['data'] = $this->data_iklan->select_iklan($id);
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/iklans/edit',$t, true);
+
+		$page = $this->load->view('admin/master',$a);
+
+		return $page;
+	}
+
+	public function proses_add_iklan()
+	{
+		$this->load->model('Admin_model','iklan');
+		$this->iklan->proses_add_iklan();
+
+		redirect(base_url().'admin/iklan');
+	}
+
+	public function proses_edit_iklan()
+	{
+		$this->load->model('Admin_model','iklan');
+		$this->iklan->proses_edit_iklan();
+
+		redirect(base_url().'admin/iklan');
+	}
+	// ends controller function untuk ads/iklan
+
 	public function edit_about()
 	{
 		$id = $this->uri->segment(3);
@@ -483,207 +543,129 @@ class Admin extends CI_Controller {
 		return $page;
 	}
 
-
-
-
-
-
-public function user(){
-
-
-	$this->load->model('Admin_model','user');
-
-	$t['user'] = $this->user->user();
-
-	$t['info'] = $this->session->userdata('username');
-
-	$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
-
-	$a['top'] =  $this->load->view('admin/layout/top',$t, true);
-
-	$a['header'] =  $this->load->view('admin/layout/header',$t, true);
-
-	$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
-
-	$a['content'] =  $this->load->view('admin/user/content',$t, true);
-
-	$page = $this->load->view('admin/dashboard',$a);
-
-	return $page;
-
-}
-
-
-
-
-public function edit_user(){
-
-	$id = $this->uri->segment(3);
-
-	$this->load->model('Admin_model','user');
-
-	$t['data'] = $this->user->select_user($id);
-
-	$t['info'] = $this->session->userdata('username');
-
-	$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
-
-	$a['top'] =  $this->load->view('admin/layout/top',$t, true);
-
-	$a['header'] =  $this->load->view('admin/layout/header',$t, true);
-
-	$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
-
-	$a['content'] =  $this->load->view('admin/user/edit_user',$t, true);
-
-	$page = $this->load->view('admin/dashboard',$a);
-
-	return $page;
-
-}
-
-
-public function proses_edit_user(){
-
-
-	$this->load->model('Admin_model','edit_user');
-
-	$this->edit_user->proses_edit_user();
-
-	redirect(base_url().'admin/user');
-
-
-}
-
-
-public function about(){
-
-
-	$this->load->model('Admin_model','about');
-
-	$t['data'] = $this->about->select_about();
-
-	$t['info'] = $this->session->userdata('username');
-
-	$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
-
-	$a['top'] =  $this->load->view('admin/layout/top',$t, true);
-
-	$a['header'] =  $this->load->view('admin/layout/header',$t, true);
-
-	$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
-
-	$a['content'] =  $this->load->view('admin/about/content',$t, true);
-
-	$page = $this->load->view('admin/dashboard',$a);
-
-	return $page;
-
-}
-
-
-public function service(){
-
-
-	$this->load->model('Admin_model','service');
-
-	$t['data'] = $this->service->select_service();
-
-	$t['info'] = $this->session->userdata('username');
-
-	$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
-
-	$a['top'] =  $this->load->view('admin/layout/top',$t, true);
-
-	$a['header'] =  $this->load->view('admin/layout/header',$t, true);
-
-	$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
-
-	$a['content'] =  $this->load->view('admin/service/content',$t, true);
-
-	$page = $this->load->view('admin/dashboard',$a);
-
-	return $page;
-
-}
-
-public function proses_edit_service(){
-
-
-	$this->load->model('Admin_model','edit_service');
-
-	$this->edit_service->proses_edit_service();
-
-	redirect(base_url().'admin/service');
-
-
-}
-
-
-public function profile(){
-
-
-	$this->load->model('Admin_model','profile');
-
-	$t['data'] = $this->profile->select_profile();
-
-	$t['info'] = $this->session->userdata('username');
-
-	$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
-
-	$a['top'] =  $this->load->view('admin/layout/top',$t, true);
-
-	$a['header'] =  $this->load->view('admin/layout/header',$t, true);
-
-	$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
-
-	$a['content'] =  $this->load->view('admin/profile/content',$t, true);
-
-	$page = $this->load->view('admin/dashboard',$a);
-
-	return $page;
-
-}
-
-
-public function proses_edit_profile(){
-
-
-	$this->load->model('Admin_model','edit_profile');
-
-	$this->edit_profile->proses_edit_profile();
-
-	redirect(base_url().'admin/profile');
-
-
-}
-
-
-
-public function blog(){
-
-
-	$this->load->model('Admin_model','blog');
-
-	$t['blog'] = $this->blog->blog();
-
-	$t['info'] = $this->session->userdata('username');
-
-	$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
-
-	$a['top'] =  $this->load->view('admin/layout/top',$t, true);
-
-	$a['header'] =  $this->load->view('admin/layout/header',$t, true);
-
-	$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
-
-	$a['content'] =  $this->load->view('admin/blog/content',$t, true);
-
-	$page = $this->load->view('admin/dashboard',$a);
-
-	return $page;
-
-}
+	public function user()
+	{
+		$this->load->model('Admin_model','user');
+		$t['user'] = $this->user->user();
+		$t['info'] = $this->session->userdata('username');
+		$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
+		$a['top'] =  $this->load->view('admin/layout/top',$t, true);
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/user/content',$t, true);
+
+		$page = $this->load->view('admin/dashboard',$a);
+
+		return $page;
+	}
+
+	public function edit_user()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->model('Admin_model','user');
+		$t['data'] = $this->user->select_user($id);
+		$t['info'] = $this->session->userdata('username');
+		$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
+		$a['top'] =  $this->load->view('admin/layout/top',$t, true);
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/user/edit_user',$t, true);
+
+		$page = $this->load->view('admin/dashboard',$a);
+
+		return $page;
+	}
+
+	public function proses_edit_user()
+	{
+		$this->load->model('Admin_model','edit_user');
+		$this->edit_user->proses_edit_user();
+
+		redirect(base_url().'admin/user');
+	}
+
+	public function about()
+	{
+		$this->load->model('Admin_model','about');
+		$t['data'] = $this->about->select_about();
+		$t['info'] = $this->session->userdata('username');
+		$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
+		$a['top'] =  $this->load->view('admin/layout/top',$t, true);
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/about/content',$t, true);
+
+		$page = $this->load->view('admin/dashboard',$a);
+
+		return $page;
+	}
+
+
+	public function service()
+	{
+		$this->load->model('Admin_model','service');
+		$t['data'] = $this->service->select_service();
+		$t['info'] = $this->session->userdata('username');
+		$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
+		$a['top'] =  $this->load->view('admin/layout/top',$t, true);
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/service/content',$t, true);
+
+		$page = $this->load->view('admin/dashboard',$a);
+
+		return $page;
+	}
+
+	public function proses_edit_service()
+	{
+		$this->load->model('Admin_model','edit_service');
+		$this->edit_service->proses_edit_service();
+
+		redirect(base_url().'admin/service');
+	}
+
+
+	public function profile()
+	{
+		$this->load->model('Admin_model','profile');
+		$t['data'] = $this->profile->select_profile();
+		$t['info'] = $this->session->userdata('username');
+		$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
+		$a['top'] =  $this->load->view('admin/layout/top',$t, true);
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/profile/content',$t, true);
+
+		$page = $this->load->view('admin/dashboard',$a);
+
+		return $page;
+	}
+
+
+	public function proses_edit_profile()
+	{
+		$this->load->model('Admin_model','edit_profile');
+		$this->edit_profile->proses_edit_profile();
+
+		redirect(base_url().'admin/profile');
+	}
+
+	public function blog()
+	{
+		$this->load->model('Admin_model','blog');
+		$t['blog'] = $this->blog->blog();
+		$t['info'] = $this->session->userdata('username');
+		$a['nav'] =  $this->load->view('admin/layout/nav',$t, true);
+		$a['top'] =  $this->load->view('admin/layout/top',$t, true);
+		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
+		$a['content'] =  $this->load->view('admin/blog/content',$t, true);
+
+		$page = $this->load->view('admin/dashboard',$a);
+
+		return $page;
+	}
 
 
 public function add_blog(){
