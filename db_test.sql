@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 04, 2024 at 06:28 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Host: localhost
+-- Generation Time: Mar 09, 2024 at 03:21 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_erhaacne_new`
+-- Database: `db_test`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `about` (
   `lead` text DEFAULT NULL,
   `content` text DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `about`
@@ -56,7 +56,7 @@ CREATE TABLE `acnefacts` (
   `status` int(5) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `acnefacts`
@@ -80,7 +80,7 @@ CREATE TABLE `blog` (
   `title` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `blog`
@@ -104,7 +104,7 @@ CREATE TABLE `comment` (
   `type` varchar(255) NOT NULL,
   `tanggal` date NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comment`
@@ -128,7 +128,7 @@ CREATE TABLE `contact` (
   `phone` varchar(255) DEFAULT NULL,
   `message` text DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `contact`
@@ -152,7 +152,7 @@ CREATE TABLE `customers` (
   `dob` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `customers`
@@ -195,7 +195,7 @@ CREATE TABLE `products` (
   `status` int(5) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `products`
@@ -219,7 +219,7 @@ INSERT INTO `products` (`id`, `product_name`, `lead_desc`, `price`, `stock`, `ra
 CREATE TABLE `profile` (
   `id_profile` int(11) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `profile`
@@ -237,7 +237,7 @@ INSERT INTO `profile` (`id_profile`, `description`) VALUES
 CREATE TABLE `service` (
   `id_service` int(11) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `service`
@@ -262,7 +262,7 @@ CREATE TABLE `sliders` (
   `status` int(5) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `sliders`
@@ -276,6 +276,34 @@ INSERT INTO `sliders` (`id`, `title_1`, `title_2`, `lead_desc`, `link`, `image`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_iklans`
+--
+
+CREATE TABLE `tbl_iklans` (
+  `id` int(11) NOT NULL,
+  `campaign_name` varchar(255) DEFAULT NULL,
+  `anggaran` int(11) NOT NULL,
+  `hasil` int(11) NOT NULL,
+  `jangkauan` int(11) NOT NULL,
+  `impresi` int(11) NOT NULL,
+  `periode_mulai` datetime DEFAULT NULL,
+  `periode_berakhir` datetime DEFAULT NULL,
+  `jumlah_dibelanjakan` int(11) NOT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_iklans`
+--
+
+INSERT INTO `tbl_iklans` (`id`, `campaign_name`, `anggaran`, `hasil`, `jangkauan`, `impresi`, `periode_mulai`, `periode_berakhir`, `jumlah_dibelanjakan`, `date_created`, `date_updated`) VALUES
+(2, 'test campaign', 200000, 3430, 210592, 342676, '2024-03-08 09:33:13', '2024-03-08 09:33:13', 999999, '2024-03-08 13:37:32', '2024-03-09 15:33:13'),
+(3, 'Test Campaign 2', 200000, 3000, 300000, 3000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 900000, '2024-03-09 10:33:41', '2024-03-09 10:42:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -285,7 +313,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `access` enum('admin','user') NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `user`
@@ -310,7 +338,7 @@ CREATE TABLE `videos` (
   `status` int(5) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `videos`
@@ -337,7 +365,7 @@ CREATE TABLE `whatsnew` (
   `status` int(5) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `whatsnew`
@@ -412,6 +440,12 @@ ALTER TABLE `service`
 --
 ALTER TABLE `sliders`
   ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `tbl_iklans`
+--
+ALTER TABLE `tbl_iklans`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -494,6 +528,12 @@ ALTER TABLE `service`
 --
 ALTER TABLE `sliders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_iklans`
+--
+ALTER TABLE `tbl_iklans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
