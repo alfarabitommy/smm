@@ -28,8 +28,8 @@
                                 <th class="wd-10p">Hasil</th>
                                 <th class="wd-10p">Jangkauan</th>
                                 <th class="wd-10p">Impresi</th>
-                                <th class="wd-10p">Periode</th>
-                                <th class="wd-10p">Biaya Per Hasil</th>
+                                <th class="wd-10p">Periode Mulai</th>
+                                <th class="wd-10p">Periode Berakhir</th>
                                 <th class="wd-10p">Biaya</th>
                                 <th class="wd-10p">Aksi</th>
                             </tr>
@@ -47,8 +47,8 @@
                                     <td><?= $iklans[$i]['hasil']; ?></td>
                                     <td><?= $iklans[$i]['jangkauan']; ?></td>
                                     <td><?= $iklans[$i]['impresi']; ?></td>
-                                    <td><?= $iklans[$i]['periode']; ?></td>
-                                    <td><?= $iklans[$i]['biaya_per_hasil']; ?></td>
+                                    <td><?= $iklans[$i]['periode_mulai'];  ?></td>
+                                    <td><?= $iklans[$i]['periode_berakhir']; ?></td>
                                     <td><?= $iklans[$i]['jumlah_dibelanjakan']; ?></td>
                                     <td>
                                         <button type="button" class="btn btn-xs btn-warning" onClick="window.location='<?= base_url(); ?>admin/edit_iklan/<?= $iklans[$i]['id']; ?>';">
