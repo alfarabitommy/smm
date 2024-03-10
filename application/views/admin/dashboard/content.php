@@ -22,7 +22,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total Iklan / Ads</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">5</h3>
+            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $iklans[0]['cn']; ?></h3>
           </div>
           <div class="chart-three">
             <div id="flotChart3" class="flot-chart ht-30"></div>
@@ -33,7 +33,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total Impresi</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">859.832</h3>
+            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= number_format($iklans[0]['imp']); ?></h3>
           </div>
           <div class="chart-three">
             <div id="flotChart4" class="flot-chart ht-30"></div>
@@ -44,7 +44,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total Jangkauan</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">582.341</h3>
+            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= number_format($iklans[0]['jw']); ?></h3>
           </div>
           <div class="chart-three">
             <div id="flotChart5" class="flot-chart ht-30"></div>
@@ -55,7 +55,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total Biaya Iklan</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Rp 2.164.072</h3>
+            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Rp <?= number_format($iklans[0]['bya']); ?></h3>
           </div>
           <div class="chart-three">
             <div id="flotChart6" class="flot-chart ht-30"></div>

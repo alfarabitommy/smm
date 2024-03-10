@@ -27,6 +27,18 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
+	//model dashboard 
+
+	public function getakumulasiiklans()
+	{
+		$sql = $this->db->query("select count(campaign_name) as cn, sum(jangkauan) as jw , sum(impresi) as imp , sum(jumlah_dibelanjakan) as bya from tbl_iklans");
+		$data = $sql->result_array();
+		return $data;
+	}
+
+
+
+
 	// model untuk panel iklan
 	public function getalliklans()
 	{

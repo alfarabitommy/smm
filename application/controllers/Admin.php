@@ -47,6 +47,8 @@ class Admin extends CI_Controller {
 
 	public function dashboard()
 	{
+		$this->load->model('Admin_model','iklans');
+		$t['iklans'] = $this->iklans->getakumulasiiklans();
 		$t['info'] = $this->session->userdata('username');
 		$a['header'] =  $this->load->view('admin/layout/header',$t, true);
 		$a['footer'] =  $this->load->view('admin/layout/footer',null, true);
