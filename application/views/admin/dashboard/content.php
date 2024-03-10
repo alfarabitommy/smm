@@ -61,7 +61,7 @@
             <div id="flotChart6" class="flot-chart ht-30"></div>
           </div><!-- chart-three -->
         </div>
-      </div><!-- col -->
+      </div><!-- col --> 
       <!-- panel iklan end -->
 
     </div><!-- row -->
