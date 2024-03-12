@@ -65,8 +65,8 @@
           <li class="nav-label">Menu</li>
           <li class="nav-item <?= ($uri=='dashboard')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/dashboard/" class="nav-link"><i data-feather="home"></i> <span>Dashboard</span></a></li>
           <li class="nav-item <?= ($uri=='iklan' || $uri=='add_iklan' || $uri=='edit_iklan')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/iklan/" class="nav-link"><i data-feather="tv"></i> <span>Iklan / Ads</span></a></li>
-          <li class="nav-item <?= ($uri=='edit_about')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/edit_about/1" class="nav-link"><i data-feather="info"></i> <span>KOL</span></a></li>
-          <li class="nav-item <?= ($uri=='products')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/products/" class="nav-link"><i data-feather="shopping-bag"></i> <span>Live</span></a></li>
+          <li class="nav-item <?= ($uri=='edit_about')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/kol/1" class="nav-link"><i data-feather="info"></i> <span>KOL</span></a></li>
+          <li class="nav-item <?= ($uri=='products')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/live/" class="nav-link"><i data-feather="shopping-bag"></i> <span>Live</span></a></li>
           <!-- <li class="nav-item <?= ($uri=='whatsnew')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/whatsnew/" class="nav-link"><i data-feather="send"></i> <span>What's New</span></a></li>
           <li class="nav-item <?= ($uri=='videos')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/videos/" class="nav-link"><i data-feather="video"></i> <span>Videos</span></a></li>
           <li class="nav-item <?= ($uri=='acnefacts')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/acnefacts/" class="nav-link"><i data-feather="layout"></i> <span>Acnefacts</span></a></li>
