@@ -99,6 +99,12 @@ class Admin_model extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->update('tbl_iklans', $data_file);
 	}
+
+	public function proses_hapus_iklan($id)
+	{
+		$sql = $this->db->query("delete from tbl_iklans where id='" . $id . "'");
+		return $sql;
+	}
 	// end model untuk panel iklan
 
 	public function proses_add_customers()

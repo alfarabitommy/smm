@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2024 at 03:21 PM
+-- Generation Time: Mar 12, 2024 at 05:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -298,8 +298,49 @@ CREATE TABLE `tbl_iklans` (
 --
 
 INSERT INTO `tbl_iklans` (`id`, `campaign_name`, `anggaran`, `hasil`, `jangkauan`, `impresi`, `periode_mulai`, `periode_berakhir`, `jumlah_dibelanjakan`, `date_created`, `date_updated`) VALUES
-(2, 'test campaign', 200000, 3430, 210592, 342676, '2024-03-08 09:33:13', '2024-03-08 09:33:13', 999999, '2024-03-08 13:37:32', '2024-03-09 15:33:13'),
-(3, 'Test Campaign 2', 200000, 3000, 300000, 3000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 900000, '2024-03-09 10:33:41', '2024-03-09 10:42:55');
+(2, 'Test Campaign', 200000, 3430, 210592, 342676, '2024-03-08 09:33:00', '2024-03-08 09:33:00', 999999, '2024-03-08 13:37:32', '2024-03-12 04:08:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_kols`
+--
+
+CREATE TABLE `tbl_kols` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `whatsapp` int(11) DEFAULT NULL,
+  `platform` varchar(255) DEFAULT NULL,
+  `tiktok_link` varchar(255) DEFAULT NULL,
+  `instagram_link` varchar(255) DEFAULT NULL,
+  `alamat_domisili` varchar(255) DEFAULT NULL,
+  `followers_instagram` int(11) DEFAULT NULL,
+  `followers_tiktok` int(11) DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
+  `tanggal_upload` datetime DEFAULT NULL,
+  `product` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_lives`
+--
+
+CREATE TABLE `tbl_lives` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `tanggal` datetime DEFAULT NULL,
+  `penonton` int(11) DEFAULT 0,
+  `pengikut_baru` int(11) DEFAULT 0,
+  `likes` int(11) DEFAULT 0,
+  `gifts` int(11) DEFAULT 0,
+  `share` int(11) DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -448,6 +489,18 @@ ALTER TABLE `tbl_iklans`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_kols`
+--
+ALTER TABLE `tbl_kols`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_lives`
+--
+ALTER TABLE `tbl_lives`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -534,6 +587,18 @@ ALTER TABLE `sliders`
 --
 ALTER TABLE `tbl_iklans`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_kols`
+--
+ALTER TABLE `tbl_kols`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_lives`
+--
+ALTER TABLE `tbl_lives`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`

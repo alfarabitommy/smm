@@ -54,7 +54,7 @@
                                         <button type="button" class="btn btn-xs btn-warning" onClick="window.location='<?= base_url(); ?>admin/edit_iklan/<?= $iklans[$i]['id']; ?>';">
                                             Edit
                                         </button>
-                                        <button type="button" class="btn btn-xs btn-danger" onClick="window.location='<?= base_url(); ?>admin/delete_sliders/<?= $iklans[$i]['id']; ?>';">
+                                        <button type="button" class="btn btn-xs btn-danger" onClick="window.location='<?= base_url(); ?>admin/delete_iklan/<?= $iklans[$i]['id']; ?>';">
                                             Delete
                                         </button>
                                     </td>

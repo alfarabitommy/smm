@@ -117,6 +117,15 @@ class Admin extends CI_Controller {
 
 		redirect(base_url().'admin/iklan');
 	}
+
+	public function delete_iklan()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->model('Admin_model','iklan');
+		$this->iklan->proses_hapus_iklan($id);
+
+		redirect(base_url().'admin/iklan');
+	}
 	// ends controller function untuk ads/iklan
 
 	public function edit_about()

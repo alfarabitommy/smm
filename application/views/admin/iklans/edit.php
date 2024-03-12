@@ -27,7 +27,7 @@ $end=Date('Y-m-d\TH:i',strtotime($data[0]['periode_berakhir']));
                 <input type="hidden" name="id" value="<?= $data[0]['id'];?>">  
                     <div class="form-group col-md-8">
                         <label for="name" class="d-block">Nama Campaign</label>
-                        <input name="name" type="text" class="form-control" value="<?= $data[0]['name'];?>" required>
+                        <input name="name" type="text" class="form-control" value="<?= $data[0]['campaign_name'];?>" required>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="anggaran" class="d-block">Anggaran</label>
