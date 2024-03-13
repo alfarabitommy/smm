@@ -36,9 +36,6 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
-
-
-
 	// model untuk panel iklan
 	public function getalliklans()
 	{
@@ -51,8 +48,8 @@ class Admin_model extends CI_Model
 	public function proses_add_iklan()
 	{
 		$date = date('Y-m-d H:i:s');
-		$start = str_replace("T"," ", $this->input->post('periode_mulai'));
-		$end = str_replace("T"," ",$this->input->post('periode_berakhir'));
+		$start = str_replace("T", " ", $this->input->post('periode_mulai'));
+		$end = str_replace("T", " ", $this->input->post('periode_berakhir'));
 		$data_file = array(
 			'campaign_name' => $this->input->post('name'),
 			'anggaran' => $this->input->post('anggaran'),
@@ -81,8 +78,8 @@ class Admin_model extends CI_Model
 		$id = $this->input->post('id');
 		$date = date('Y-m-d H:i:s');
 
-		$start = str_replace("T"," ", $this->input->post('periode_mulai'));
-		$end = str_replace("T"," ",$this->input->post('periode_berakhir'));
+		$start = str_replace("T", " ", $this->input->post('periode_mulai'));
+		$end = str_replace("T", " ", $this->input->post('periode_berakhir'));
 
 		$data_file = array(
 			'campaign_name' => $this->input->post('name'),
@@ -106,6 +103,81 @@ class Admin_model extends CI_Model
 		return $sql;
 	}
 	// end model untuk panel iklan
+
+	// start model untuk KOL
+
+	public function getallkols()
+	{
+		$sql = $this->db->query("select * from tbl_kols");
+		$data = $sql->result_array();
+
+		return $data;
+	}
+
+	public function proses_add_kol()
+	{
+		$date = date('Y-m-d H:i:s');
+
+		$uploadDate = str_replace("T", " ", $this->input->post('tanggal_upload'));
+		$data_file = array(
+			'nama' => $this->input->post('nama'),
+			'whatsapp' => $this->input->post('whatsapp'),
+			'platform' => $this->input->post('platform'),
+			'tiktok_link' => $this->input->post('tiktok_link'),
+			'instagram_link' => $this->input->post('instagram_link'),
+			'alamat_domisili' => $this->input->post('alamat_domisili'),
+			'followers_instagram' => $this->input->post('followers_instagram'),
+			'followers_tiktok' => $this->input->post('followers_tiktok'),
+			'keterangan' => $this->input->post('keterangan'),
+			'tanggal_upload' => $uploadDate,
+			'product' => $this->input->post('produk'),
+			'created_at' => $date,
+			'updated_at' => $date
+		);
+
+		$this->db->insert('tbl_kols', $data_file);
+	}
+
+	public function select_kol($id)
+	{
+		$sql = $this->db->query("select * from tbl_kols where id='" . $id . "'");
+		$data = $sql->result_array();
+
+		return $data;
+	}
+
+	public function proses_edit_kol()
+	{
+		$id = $this->input->post('id');
+		$date = date('Y-m-d H:i:s');
+
+		$uploadDate = str_replace("T", " ", $this->input->post('tanggal_upload'));
+		$data_file = array(
+			'nama' => $this->input->post('name'),
+			'whatsapp' => $this->input->post('whatsapp'),
+			'platform' => $this->input->post('platform'),
+			'tiktok_link' => $this->input->post('tiktok_link'),
+			'instagram_link' => $this->input->post('instagram_link'),
+			'alamat_domisili' => $this->input->post('alamat_domisili'),
+			'followers_instagram' => $this->input->post('followers_instagram'),
+			'followers_tiktok' => $this->input->post('followers_tiktok'),
+			'keterangan' => $this->input->post('keterangan'),
+			'tanggal_upload' => $uploadDate,
+			'product' => $this->input->post('produk'),
+			'updated_at' => $date
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('tbl_kols', $data_file);
+	}
+
+	public function proses_hapus_kol($id)
+	{
+		$sql = $this->db->query("delete from tbl_kols where id='" . $id . "'");
+		return $sql;
+	}
+
+	// end model untuk KOL
 
 	public function proses_add_customers()
 	{

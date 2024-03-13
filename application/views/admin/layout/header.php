@@ -35,7 +35,7 @@
     <aside class="aside aside-fixed">
       <div class="aside-header">
         <a href="#" class="aside-logo">
-          <img src="<?= base_url(); ?>assets/follow-me-black.PNG" alt="" width="150">
+          <img src="<?= base_url(); ?>assets/follow-me-black.png" alt="" width="150">
         </a>
         <a href="" class="aside-menu-link">
           <i data-feather="menu"></i>
@@ -65,8 +65,8 @@
           <li class="nav-label">Menu</li>
           <li class="nav-item <?= ($uri=='dashboard')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/dashboard/" class="nav-link"><i data-feather="home"></i> <span>Dashboard</span></a></li>
           <li class="nav-item <?= ($uri=='iklan' || $uri=='add_iklan' || $uri=='edit_iklan')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/iklan/" class="nav-link"><i data-feather="tv"></i> <span>Iklan / Ads</span></a></li>
-          <li class="nav-item <?= ($uri=='edit_about')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/kol/1" class="nav-link"><i data-feather="info"></i> <span>KOL</span></a></li>
-          <li class="nav-item <?= ($uri=='products')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/live/" class="nav-link"><i data-feather="shopping-bag"></i> <span>Live</span></a></li>
+          <li class="nav-item <?= ($uri=='kol' || $uri=='view_kol' || $uri=='add_kol' || $uri=='edit_kol')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/kol/" class="nav-link"><i data-feather="star"></i> <span>KOL</span></a></li>
+          <li class="nav-item <?= ($uri=='live')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/live/" class="nav-link"><i data-feather="video"></i> <span>Live</span></a></li>
           <!-- <li class="nav-item <?= ($uri=='whatsnew')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/whatsnew/" class="nav-link"><i data-feather="send"></i> <span>What's New</span></a></li>
           <li class="nav-item <?= ($uri=='videos')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/videos/" class="nav-link"><i data-feather="video"></i> <span>Videos</span></a></li>
           <li class="nav-item <?= ($uri=='acnefacts')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/acnefacts/" class="nav-link"><i data-feather="layout"></i> <span>Acnefacts</span></a></li>
@@ -78,7 +78,7 @@
       </div>
     </aside>
 
-    <div class="content ht-100v pd-0">
+    <div class="content pd-0">
       <!-- <div class="content-header">
         <div class="content-search">
           <i data-feather="search"></i>
