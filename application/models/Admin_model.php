@@ -36,6 +36,28 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
+	public function getakumulasikols1()
+	{
+		$sql = $this->db->query("select count(id) as total_kol, sum(followers_instagram+followers_tiktok) as total_follower from tbl_kols");
+		$data = $sql->result_array();
+
+		return $data;
+	}
+
+	public function getakumulasikols2()
+	{
+		$sql = $this->db->query("select product,count(product) as jml from `tbl_kols` group by product order by jml desc");
+		$data = $sql->result_array();
+		return $data;
+	}
+
+	public function gettotalsosmed()
+	{
+		$sql = $this->db->query("select sum(followers_instagram) as ig, sum(followers_tiktok) as tiktok from tbl_kols");
+		$data = $sql->result_array();
+		return $data;
+	}
+
 	// model untuk panel iklan
 	public function getalliklans()
 	{

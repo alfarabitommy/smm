@@ -465,67 +465,88 @@
 
   })
 
-  const xValues = ['TikTok', 'Instagram'];
-  const yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
-  const barColors = ["#EE1D52", "#9F70FD"];
 
-  new Chart("myChart", {
-    type: "bar",
-    data: {
-      labels: xValues,
-      datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: barColors,
-        borderColor: "#86A7FC",
-        data: yValues
-      }]
-    },
-    options: {
-      legend: {
-        display: false
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            min: 0,
-            max: 50
+
+  fetch('http://localhost/smm/admin/api_tiktok_ig')
+        .then(r => r.json())
+        .then((rr) => {
+          const xValues = ['TikTok', 'Instagram'];
+          const yValues = []
+          const barColors = ["#EE1D52", "#9F70FD"];
+          // console.log(rr);
+          for (var i = 0; i < rr.length; i++) {
+            yValues.push(rr[i])
           }
-        }],
-      }
-    }
-  });
 
-  const x1Values = ['Glorious Moonlight', 'Senso di Blossom', 'Sunset Falvor', 'Brotherhood Story', 'Happy', 'Joyful', 'Romance'];
-  const y1Values = [18, 20, 10, 9, 9, 8, 15];
-  const barColors1 = ["#3C2612", "#F48CA6", "#D48E29", "#362721", "#FFF67E", "#9BCF53", "#9F70FD"];
+          new Chart("myChart", {
+            type: "bar",
+            data: {
+              labels: xValues,
+              datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: barColors,
+                borderColor: "#86A7FC",
+                data: yValues
+              }]
+            },
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 500000
+                  }
+                }],
+              }
+            }
+          });
 
-  new Chart("myChart1", {
-    type: "bar",
-    data: {
-      labels: x1Values,
-      datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: barColors1,
-        borderColor: "#86A7FC",
-        data: y1Values
-      }]
-    },
-    options: {
-      legend: {
-        display: false
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            min: 0,
-            max: 50
+        })
+
+        fetch('http://localhost/smm/admin/api_product_total')
+        .then(dd => dd.json())
+        .then((ddd) => {
+          const x1Values = [];
+          const y1Values = [];
+          const barColors1 = ["#3C2612", "#F48CA6", "#D48E29", "#362721", "#FFF67E", "#9BCF53", "#9F70FD"];
+         
+          for (var i = 0; i < ddd.length; i++) {
+            x1Values.push(ddd[i]?.product)
+            y1Values.push(ddd[i]?.jml)
           }
-        }],
-      }
-    }
-  });
+
+          new Chart("myChart1", {
+            type: "bar",
+            data: {
+              labels: x1Values,
+              datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: barColors1,
+                borderColor: "#86A7FC",
+                data: y1Values
+              }]
+            },
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 50
+                  }
+                }],
+              }
+            }
+          });
+
+        })
 
   const x2Values = ['Yesi', 'Maulinda', 'Dhea', 'Dika'];
   const y2Values = [10, 8, 8, 9];

@@ -77,7 +77,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total KOL</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">5</h3>
+            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $kol1[0]['total_kol'];?></h3>
           </div>
           <div class="chart-three" style="font-size: 7pt; font-style: italic;">
             <span>*Jumlah semua KOL yang sudah tercatat dalam sistem</span>
@@ -88,7 +88,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Total Followers</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">859.832</h3>
+            <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= number_format($kol1[0]['total_follower']);?></h3>
           </div>
           <div class="chart-three" style="font-size: 7pt; font-style: italic;">
             <span>*Jumlah semua total followers dari KOL yang terdaftar</span>
@@ -99,7 +99,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Produk Paling Dipromosikan</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Senso di Blossom</h4>
+            <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $kol2[0]['product'];?></h4>
           </div>
           <div class="chart-three" style="font-size: 7pt; font-style: italic;">
             <span>*Produk yang paling banyak dipromosikan oleh KOL</span>
@@ -110,7 +110,7 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Produk Kurang Dipromosikan</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Broterhood Story</h4>
+            <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $kol2[1]['product'];?></h4>
           </div>
           <div class="chart-three" style="font-size: 7pt; font-style: italic;">
             <span>*Produk yang kurang dipromosikan melalui KOL</span>

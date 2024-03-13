@@ -50,6 +50,8 @@ class Admin extends CI_Controller
 	{
 		$this->load->model('Admin_model', 'iklans');
 		$t['iklans'] = $this->iklans->getakumulasiiklans();
+		$t['kol1'] = $this->iklans->getakumulasikols1();
+		$t['kol2'] = $this->iklans->getakumulasikols2();
 		$t['info'] = $this->session->userdata('username');
 		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
 		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
@@ -58,6 +60,21 @@ class Admin extends CI_Controller
 		$page = $this->load->view('admin/master', $a);
 
 		return $page;
+	}
+
+	public function api_tiktok_ig()
+	{
+		$this->load->model('Admin_model', 'kols');
+		$data = $this->kols->gettotalsosmed();
+		$manage = array($data[0]['ig'],$data[0]['tiktok']);
+		echo json_encode($manage);
+	}
+
+	public function api_product_total()
+	{
+		$this->load->model('Admin_model', 'kols');
+		$data = $this->kols->getakumulasikols2();
+		echo json_encode($data);
 	}
 
 	// controller panel untuk ads/iklan
