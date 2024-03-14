@@ -180,6 +180,9 @@ class Admin extends CI_Controller
 	public function add_kol()
 	{
 		$t['info'] = $this->session->userdata('username');
+
+		$this->load->model('Admin_model', 'kol');
+		$t['produks'] = $this->kol->getallproducts();
 		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
 		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
 		$a['content'] =  $this->load->view('admin/kol/add', $t, true);
@@ -195,6 +198,7 @@ class Admin extends CI_Controller
 		$this->load->model('Admin_model', 'data_kol');
 
 		$t['data'] = $this->data_kol->select_kol($id);
+		$t['produks'] = $this->data_kol->getallproducts();
 		$t['info'] = $this->session->userdata('username');
 		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
 		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
@@ -263,7 +267,7 @@ class Admin extends CI_Controller
 		$this->load->model('Admin_model', 'produk');
 		$this->produk->proses_add_product();
 
-		redirect(base_url() . 'admin/master-product');
+		redirect(base_url() . 'admin/master-produk');
 	}
 
 	public function edit_product()
@@ -277,7 +281,7 @@ class Admin extends CI_Controller
 		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
 		$a['content'] =  $this->load->view('admin/products/edit', $t, true);
 
-		$page = $this->load->view('admin/master', $a);
+		$page = $this->load->view('admin/master-produk', $a);
 
 		return $page;
 	}

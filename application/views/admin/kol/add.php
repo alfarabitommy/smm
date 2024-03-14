@@ -66,7 +66,17 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="produk" class="d-block">Produk</label>
-                        <input name="produk" type="text" class="form-control" placeholder="Masukkan varian produk" required>
+                        <select class="form-select">
+                            <option selected>Pilih Varian Produk</option>
+                            <?php
+                            $jumlah = count($produks);
+                            $no = 1;
+                            for ($i = 0; $i < $jumlah; $i++) {
+                            ?>
+                                <option value="<?= $produks[$i]['nama']; ?>"><?= $produks[$i]['nama']; ?></option>
+                            <?php $no++;
+                            } ?>
+                        </select>
                     </div>
                     <div class="col-md-8">
                         <button class="btn btn-primary" type="submit">Submit</button>

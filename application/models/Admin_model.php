@@ -250,7 +250,7 @@ class Admin_model extends CI_Model
 		$id = $this->input->post('id');
 		$date = date('Y-m-d H:i:s');
 
-		$uploadDate = str_replace("T", " ", $this->input->post('tgl_kadaluarsa'));
+		$uploadDate = str_replace("T", " ", $this->input->post('tanggal_upload'));
 		$data_file = array(
 			'nama' => $this->input->post('nama'),
 			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
@@ -263,7 +263,8 @@ class Admin_model extends CI_Model
 			'bpom' => $this->input->post('bpom'),
 			'ukuran_per_produk' => $this->input->post('ukuran_per_produk'),
 			'deskripsi' => $this->input->post('deskripsi'),
-			'tgl_kadaluarsa' => $uploadDate,
+			'produk' => $this->input->post('produk'),
+			'tanggal_upload' => $uploadDate,
 			'updated_at' => $date
 		);
 
