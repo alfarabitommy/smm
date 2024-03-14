@@ -110,7 +110,13 @@
         <div class="card card-body">
           <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Produk Kurang Dipromosikan</h6>
           <div class="d-flex d-lg-block d-xl-flex align-items-end">
-            <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $kol2[1]['product'];?></h4>
+            <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">
+            <?php 
+              $jml = count($kol2);
+              $j = $jml - 1;
+              echo $kol2[$j]['product'];
+            ?>
+            </h4>
           </div>
           <div class="chart-three" style="font-size: 7pt; font-style: italic;">
             <span>*Produk yang kurang dipromosikan melalui KOL</span>
