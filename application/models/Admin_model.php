@@ -143,6 +143,7 @@ class Admin_model extends CI_Model
 		$uploadDate = str_replace("T", " ", $this->input->post('tanggal_upload'));
 		$data_file = array(
 			'nama' => $this->input->post('nama'),
+			'username' => $this->input->post('username'),
 			'whatsapp' => $this->input->post('whatsapp'),
 			'platform' => $this->input->post('platform'),
 			'tiktok_link' => $this->input->post('tiktok_link'),
@@ -176,6 +177,7 @@ class Admin_model extends CI_Model
 		$uploadDate = str_replace("T", " ", $this->input->post('tanggal_upload'));
 		$data_file = array(
 			'nama' => $this->input->post('name'),
+			'username' => $this->input->post('username'),
 			'whatsapp' => $this->input->post('whatsapp'),
 			'platform' => $this->input->post('platform'),
 			'tiktok_link' => $this->input->post('tiktok_link'),
@@ -200,6 +202,81 @@ class Admin_model extends CI_Model
 	}
 
 	// end model untuk KOL
+
+	// Start model untuk master produk
+	public function getallproducts()
+	{
+		$sql = $this->db->query("select * from tbl_products");
+		$data = $sql->result_array();
+
+		return $data;
+	}
+
+	public function proses_add_product()
+	{
+		$date = date('Y-m-d H:i:s');
+
+		$uploadDate = str_replace("T", " ", $this->input->post('tgl_kadaluarsa'));
+		$data_file = array(
+			'nama' => $this->input->post('nama'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+			'aroma' => $this->input->post('aroma'),
+			'volume' => $this->input->post('volume'),
+			'formulasi' => $this->input->post('formulasi'),
+			'berat_produk' => $this->input->post('berat_produk'),
+			'masa_penyimpanan' => $this->input->post('masa_penyimpanan'),
+			'kandungan_parfum' => $this->input->post('kandungan_parfum'),
+			'bpom' => $this->input->post('bpom'),
+			'ukuran_per_produk' => $this->input->post('ukuran_per_produk'),
+			'deskripsi' => $this->input->post('deskripsi'),
+			'tgl_kadaluarsa' => $uploadDate,
+			'created_at' => $date,
+			'updated_at' => $date
+		);
+
+		$this->db->insert('tbl_products', $data_file);
+	}
+
+	public function select_product($id)
+	{
+		$sql = $this->db->query("select * from tbl_products where id='" . $id . "'");
+		$data = $sql->result_array();
+
+		return $data;
+	}
+
+	public function proses_edit_product()
+	{
+		$id = $this->input->post('id');
+		$date = date('Y-m-d H:i:s');
+
+		$uploadDate = str_replace("T", " ", $this->input->post('tgl_kadaluarsa'));
+		$data_file = array(
+			'nama' => $this->input->post('nama'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+			'aroma' => $this->input->post('aroma'),
+			'volume' => $this->input->post('volume'),
+			'formulasi' => $this->input->post('formulasi'),
+			'berat_produk' => $this->input->post('berat_produk'),
+			'masa_penyimpanan' => $this->input->post('masa_penyimpanan'),
+			'kandungan_parfum' => $this->input->post('kandungan_parfum'),
+			'bpom' => $this->input->post('bpom'),
+			'ukuran_per_produk' => $this->input->post('ukuran_per_produk'),
+			'deskripsi' => $this->input->post('deskripsi'),
+			'tgl_kadaluarsa' => $uploadDate,
+			'updated_at' => $date
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('tbl_products', $data_file);
+	}
+
+	public function proses_hapus_product($id)
+	{
+		$sql = $this->db->query("delete from tbl_products where id='" . $id . "'");
+		return $sql;
+	}
+	// End model untuk master produk
 
 	public function proses_add_customers()
 	{
@@ -251,192 +328,6 @@ class Admin_model extends CI_Model
 		$data = $sql->result_array();
 
 		return $data;
-	}
-
-	// PRODUCTS
-	public function getallproducts()
-	{
-		$sql = $this->db->query("select * from products");
-		$data = $sql->result_array();
-
-		return $data;
-	}
-
-	public function getallproductsrandom()
-	{
-		$sql = $this->db->query("select * from products order by rand()");
-		$data = $sql->result_array();
-
-		return $data;
-	}
-
-	public function proses_add_product()
-	{
-		$date = date('Y-m-d H:i:s');
-		$foto = str_replace(" ", "_", $_FILES['image1']['name']);
-		$banner = str_replace(" ", "_", $_FILES['banner']['name']);
-		// $foto2 = str_replace(" ","_",$_FILES['image2']['name']);
-		// $foto3 = str_replace(" ","_",$_FILES['image3']['name']);
-		// $foto4 = str_replace(" ","_",$_FILES['image4']['name']);
-
-		if (!empty($foto) and !empty($banner)) {
-			$tujuan_file = realpath(APPPATH . '../assets/products/');
-			$konfigurasi = array(
-				'allowed_types' => 'jpg|jpeg|png|pdf|bmp|JPG',
-				'upload_path' => $tujuan_file,
-				'remove_spaces' => TRUE
-			);
-			$this->load->library('upload', $konfigurasi);
-			$this->upload->do_upload('image1');
-			$this->upload->data();
-
-			$tujuan = realpath(APPPATH . '../assets/products/');
-			$konfig = array(
-				'allowed_types' => 'jpg|jpeg|png|pdf|bmp|JPG',
-				'upload_path' => $tujuan,
-				'remove_spaces' => TRUE
-			);
-			$this->load->library('upload', $konfig);
-			$this->upload->do_upload('banner');
-			$this->upload->data();
-
-
-			$data_file = array(
-				'product_name' => $this->input->post('product_name'),
-				'lead_desc' => $this->input->post('lead_desc'),
-				'price' => $this->input->post('price'),
-				'stock' => $this->input->post('stock'),
-				'rating' => $this->input->post('rating'),
-				'store_link' => $this->input->post('store_link'),
-				'desc' => $this->input->post('desc'),
-				'contains' => $this->input->post('contains'),
-				'packaging' => $this->input->post('packaging'),
-				'howto' => $this->input->post('howto'),
-				'image1' => $foto,
-				'banner' => $banner,
-				// 'image2'=>$foto,
-				// 'image3'=>$foto,
-				// 'image4'=>$foto,
-				// 'background'=>$foto,
-				'status' => $this->input->post('status'),
-				'created_at' => $date
-			);
-
-			$this->db->insert('products', $data_file);
-		} else {
-			$data_file = array(
-				'product_name' => $this->input->post('product_name'),
-				'lead_desc' => $this->input->post('lead_desc'),
-				'price' => $this->input->post('price'),
-				'stock' => $this->input->post('stock'),
-				'rating' => $this->input->post('rating'),
-				'store_link' => $this->input->post('store_link'),
-				'desc' => $this->input->post('desc'),
-				'contains' => $this->input->post('contains'),
-				'packaging' => $this->input->post('packaging'),
-				'howto' => $this->input->post('howto'),
-				'status' => $this->input->post('status'),
-				'created_at' => $date
-			);
-
-			$this->db->insert('products', $data_file);
-		}
-	}
-
-	public function select_product($id)
-	{
-		$sql = $this->db->query("select * from products where id='" . $id . "'");
-		$data = $sql->result_array();
-
-		return $data;
-	}
-
-	public function proses_edit_product()
-	{
-
-		$date = date('Y-m-d H:i:s');
-		$id = $this->input->post('id');
-		$foto = str_replace(" ", "_", $_FILES['image1']['name']);
-		$banner = str_replace(" ", "_", $_FILES['banner']['name']);
-
-		if (!empty($foto) and !empty($banner)) {
-			$tujuan_file = realpath(APPPATH . '../assets/products/');
-			$konfigurasi = array(
-				'allowed_types' => 'jpg|jpeg|png|pdf|bmp|JPG',
-				'upload_path' => $tujuan_file,
-				'remove_spaces' => TRUE
-			);
-			$this->load->library('upload', $konfigurasi);
-			$this->upload->do_upload('image1');
-			$this->upload->data();
-
-
-
-
-			$tujuan = realpath(APPPATH . '../admin/products/');
-			$konfig = array(
-				'allowed_types' => 'jpg|jpeg|png|pdf|bmp|JPG',
-				'upload_path' => $tujuan,
-				'remove_spaces' => TRUE
-			);
-			$this->load->library('upload', $konfig);
-			$this->upload->do_upload('banner');
-			$this->upload->data();
-
-
-
-			$data_file = array(
-				'product_name' => $this->input->post('product_name'),
-				'lead_desc' => $this->input->post('lead_desc'),
-				'price' => $this->input->post('price'),
-				'stock' => $this->input->post('stock'),
-				'rating' => $this->input->post('rating'),
-				'store_link' => $this->input->post('store_link'),
-				'desc' => $this->input->post('desc'),
-				'contains' => $this->input->post('contains'),
-				'packaging' => $this->input->post('packaging'),
-				'howto' => $this->input->post('howto'),
-				'image1' => $foto,
-				'banner' => $banner,
-				// 'image2'=>$foto,
-				// 'image3'=>$foto,
-				// 'image4'=>$foto,
-				// 'background'=>$foto,
-				'status' => $this->input->post('status'),
-				'modified_at' => $date
-			);
-
-			$this->db->where('id', $id);
-			$this->db->update('products', $data_file);
-		} else {
-
-			$data_file = array(
-				'product_name' => $this->input->post('product_name'),
-				'lead_desc' => $this->input->post('lead_desc'),
-				'price' => $this->input->post('price'),
-				'stock' => $this->input->post('stock'),
-				'rating' => $this->input->post('rating'),
-				'store_link' => $this->input->post('store_link'),
-				'desc' => $this->input->post('desc'),
-				'contains' => $this->input->post('contains'),
-				'packaging' => $this->input->post('packaging'),
-				'howto' => $this->input->post('howto'),
-				'status' => $this->input->post('status'),
-				'modified_at' => $date
-			);
-			// die($id);
-			// die(var_dump($data_file));
-
-			$this->db->where('id', $id);
-			$this->db->update('products', $data_file);
-		}
-	}
-
-	public function proses_hapus_product($id)
-	{
-
-		$sql = $this->db->query("delete from products where id='" . $id . "'");
-		return $sql;
 	}
 
 	// WHAT'S NEW

@@ -20,7 +20,7 @@
                 <br>
                 <div data-label="Example" class="df-example demo-table">
                     <table id="example1" class="table">
-                        <thead>
+                        <thead style="font-size: 10pt;">
                             <tr>
                                 <th class="wd-5p">No</th>
                                 <th class="wd-10p">Name</th>
@@ -29,12 +29,11 @@
                                 <th class="wd-10p">Jangkauan</th>
                                 <th class="wd-10p">Impresi</th>
                                 <th class="wd-10p">Periode Mulai</th>
-                                <th class="wd-10p">Periode Berakhir</th>
                                 <th class="wd-10p">Biaya</th>
                                 <th class="wd-10p">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 9pt;">
                             <?php
                             $jumlah = count($iklans);
                             $no = 1;
@@ -48,7 +47,6 @@
                                     <td><?= $iklans[$i]['jangkauan']; ?></td>
                                     <td><?= $iklans[$i]['impresi']; ?></td>
                                     <td><?= $iklans[$i]['periode_mulai'];  ?></td>
-                                    <td><?= $iklans[$i]['periode_berakhir']; ?></td>
                                     <td><?= $iklans[$i]['jumlah_dibelanjakan']; ?></td>
                                     <td>
                                         <button type="button" class="btn btn-xs btn-warning" onClick="window.location='<?= base_url(); ?>admin/edit_iklan/<?= $iklans[$i]['id']; ?>';">

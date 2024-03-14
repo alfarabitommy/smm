@@ -25,6 +25,10 @@
                         <input name="nama" type="text" class="form-control" placeholder="Masukkan nama KOL" required>
                     </div>
                     <div class="form-group col-md-8">
+                        <label for="username" class="d-block">Username</label>
+                        <input name="username" type="text" class="form-control" placeholder="Masukkan username KOL" required>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="whatsapp" class="d-block">Whatsapp</label>
                         <input name="whatsapp" type="text" class="form-control" placeholder="Masukkan nomor whatsapp" required>
                     </div>

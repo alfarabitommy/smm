@@ -29,6 +29,10 @@ $uploadDate=Date('Y-m-d\TH:i',strtotime($data[0]['tanggal_upload']));
                         <input name="name" type="text" class="form-control" value="<?= $data[0]['nama'];?>" required>
                     </div>
                     <div class="form-group col-md-8">
+                        <label for="username" class="d-block">Username</label>
+                        <input name="username" type="text" class="form-control" value="<?= $data[0]['username'];?>" required>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="whatsapp" class="d-block">Whatsapp</label>
                         <input name="whatsapp" type="text" class="form-control" value="<?= $data[0]['whatsapp'];?>" required>
                     </div>

@@ -72,8 +72,8 @@
           <li class="nav-item <?= ($uri=='acnefacts')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/acnefacts/" class="nav-link"><i data-feather="layout"></i> <span>Acnefacts</span></a></li>
           <li class="nav-item <?= ($uri=='customers')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/customers/" class="nav-link"><i data-feather="users"></i> <span>Customers</span></a></li>
           <li class="nav-item <?= ($uri=='sliders')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/messages/" class="nav-link"><i data-feather="inbox"></i> <span>Messages</span></a></li> -->
-          <li class="nav-label mg-t-25">Web Apps</li>
-          <li class="nav-item"><a href="app-mail.html" class="nav-link"><i data-feather="settings"></i> <span>Site Settings</span></a></li>
+          <li class="nav-label mg-t-25">Master Data</li>
+          <li class="nav-item <?= ($uri=='master-produk')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/master-produk/" class="nav-link"><i data-feather="database"></i> <span>Master Produk</span></a></li>
         </ul>
       </div>
     </aside>

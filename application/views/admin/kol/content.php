@@ -20,7 +20,7 @@
                 <br>
                 <div data-label="Example" class="df-example demo-table">
                     <table id="example1" class="table">
-                        <thead>
+                        <thead style="font-size: 10pt;">
                             <tr>
                                 <th class="wd-5p">No</th>
                                 <th class="wd-10p">Nama</th>
@@ -35,7 +35,7 @@
                                 <th class="wd-10p">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: 9pt;">
                             <?php
                             $jumlah = count($kols);
                             $no = 1;

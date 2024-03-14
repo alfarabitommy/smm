@@ -229,8 +229,67 @@ class Admin extends CI_Controller
 
 		redirect(base_url() . 'admin/kol');
 	}
-
 	// End controller function untuk KOL
+
+	// Start controller function untuk master produk
+	public function master_produk()
+	{
+		$this->load->model('Admin_model', 'master_produk');
+		$t['products'] = $this->master_produk->getallproducts();
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
+		$a['content'] =  $this->load->view('admin/products/content', $t, true);
+
+		$page = $this->load->view('admin/master', $a);
+
+		return $page;
+	}
+
+	public function add_product()
+	{
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
+		$a['content'] =  $this->load->view('admin/products/add', $t, true);
+
+		$page = $this->load->view('admin/master', $a);
+
+		return $page;
+	}
+
+	public function proses_add_product()
+	{
+		$this->load->model('Admin_model', 'produk');
+		$this->produk->proses_add_product();
+
+		redirect(base_url() . 'admin/master-product');
+	}
+
+	public function edit_product()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->model('Admin_model', 'products');
+
+		$t['data'] = $this->products->select_product($id);
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
+		$a['content'] =  $this->load->view('admin/products/edit', $t, true);
+
+		$page = $this->load->view('admin/master', $a);
+
+		return $page;
+	}
+
+	public function proses_edit_product()
+	{
+		$this->load->model('Admin_model', 'products');
+		$this->products->proses_edit_product();
+
+		redirect(base_url() . 'admin/products');
+	}
+	// End controlloer function untuk master produk
 
 	public function edit_about()
 	{
@@ -282,37 +341,9 @@ class Admin extends CI_Controller
 		return $page;
 	}
 
-	public function proses_add_product()
-	{
-		$this->load->model('Admin_model', 'products');
-		$this->products->proses_add_product();
+	
 
-		redirect(base_url() . 'admin/products');
-	}
-
-	public function edit_product()
-	{
-		$id = $this->uri->segment(3);
-		$this->load->model('Admin_model', 'products');
-
-		$t['data'] = $this->products->select_product($id);
-		$t['info'] = $this->session->userdata('username');
-		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
-		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
-		$a['content'] =  $this->load->view('admin/products/edit', $t, true);
-
-		$page = $this->load->view('admin/master', $a);
-
-		return $page;
-	}
-
-	public function proses_edit_product()
-	{
-		$this->load->model('Admin_model', 'products');
-		$this->products->proses_edit_product();
-
-		redirect(base_url() . 'admin/products');
-	}
+	
 
 	public function delete_product()
 	{
