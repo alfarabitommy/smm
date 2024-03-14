@@ -70,16 +70,18 @@ $uploadDate = Date('Y-m-d\TH:i', strtotime($data[0]['tanggal_upload']));
                     </div>
                     <div class="form-group col-md-8">
                         <label for="produk" class="d-block">Produk</label>
-                        <select class="form-select" name="produk">
+                        <select class="form-control" name="produk">
                             <option>Pilih Varian Produk</option>
                             <?php
                             $jumlah = count($produks);
-                            $no = 1;
                             for ($i = 0; $i < $jumlah; $i++) {
+                                if($produks[$i]['nama'] == $data[0]['product']){
+                                    echo "<option value='".$produks[$i]['nama']."' selected>".$produks[$i]['nama']."</option>";
+                                }else{
+                                    echo "<option value='".$produks[$i]['nama']."'>".$produks[$i]['nama']."</option>";
+                                }
+                            } 
                             ?>
-                                <option value="<?= $produks[$i]['nama']; ?>" <?php if($produks[$i]['nama'] == $produks[$i]['nama']) echo 'selected="selected"'; ?>><?= $produks[$i]['nama']; ?></option>
-                            <?php $no++;
-                            } ?>
                         </select>
                     </div>
 
