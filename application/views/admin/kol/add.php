@@ -36,12 +36,10 @@
                         <label for="platform" class="d-block">Platform</label>
                         <!-- <input name="platform" type="text" class="form-control" placeholder="Masukkan platform" required> -->
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="platform" name="platform[]" value="TikTok">
-                            <label class="custom-control-label" for="platform">TikTok</label>
+                            <input type="checkbox" id="platform" name="platform[]" value="TikTok"> TikTok
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="platform" name="platform[]" value="Instagram">
-                            <label class="custom-control-label" for="platform">Instagram</label>
+                            <input type="checkbox" id="platform" name="platform[]" value="Instagram"> Instagram
                         </div>
                     </div>
                     <div class="form-group col-md-8">
@@ -74,15 +72,14 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="produk" class="d-block">Produk</label>
-                        <select class="form-select">
+                        <select class="form-control" name="produk">
                             <option selected>Pilih Varian Produk</option>
                             <?php
                             $jumlah = count($produks);
-                            $no = 1;
                             for ($i = 0; $i < $jumlah; $i++) {
                             ?>
                                 <option value="<?= $produks[$i]['nama']; ?>"><?= $produks[$i]['nama']; ?></option>
-                            <?php $no++;
+                            <?php 
                             } ?>
                         </select>
                     </div>

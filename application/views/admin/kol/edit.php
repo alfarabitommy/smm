@@ -39,16 +39,35 @@ $uploadDate = Date('Y-m-d\TH:i', strtotime($data[0]['tanggal_upload']));
                     <div class="form-group col-md-8">
                         <label for="platform" class="d-block">Platform</label>
                         <div class="form-group col-md-8">
-                            <label for="platform" class="d-block">Platform</label>
-                            <!-- <input name="platform" type="text" class="form-control" placeholder="Masukkan platform" required> -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="platform" name="platform[]" value="TikTok">
-                                <label class="custom-control-label" for="platform">TikTok</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="platform" name="platform[]" value="Instagram">
-                                <label class="custom-control-label" for="platform">Instagram</label>
-                            </div>
+                            <?php
+                                $pos = strpos($data[0]['platform'], ",");
+                                if ($pos !== false) {
+                                        $pf = explode(",",$data[0]['platform']);
+                                   ?>                                   
+                                   <label for="platform" class="d-block">Platform</label>
+                                        <!-- <input name="platform" type="text" class="form-control" placeholder="Masukkan platform" required> -->
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="platform" name="platform[]" value="<?= $pf[0];?>" checked> <?= $pf[0]; ?>
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="platform" name="platform[]" value="<?= $pf[1];?>" checked> <?= $pf[1]; ?>
+                                        </div>
+                                   <?php
+                                } else {
+                                    $plf1 = ($data[0]['platform'] == 'Tiktok') ? 'checked' : '';
+                                    $plf2 = ($data[0]['platform'] == 'Instagram') ? 'checked' : '';
+                                   ?>
+                                    <label for="platform" class="d-block">Platform</label>
+                                        <!-- <input name="platform" type="text" class="form-control" placeholder="Masukkan platform" required> -->
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="platform" name="platform[]" value="Tiktok" <?= $plf1; ?> > Tiktok
+                                        </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="platform" name="platform[]" value="Instagram" <?= $plf2; ?> > Instagram
+                                        </div>
+                                   <?php
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="form-group col-md-8">
