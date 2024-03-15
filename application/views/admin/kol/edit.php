@@ -38,7 +38,18 @@ $uploadDate = Date('Y-m-d\TH:i', strtotime($data[0]['tanggal_upload']));
                     </div>
                     <div class="form-group col-md-8">
                         <label for="platform" class="d-block">Platform</label>
-                        <textarea name="platform" class="form-control" rows="5" required><?= $data[0]['platform']; ?></textarea>
+                        <div class="form-group col-md-8">
+                            <label for="platform" class="d-block">Platform</label>
+                            <!-- <input name="platform" type="text" class="form-control" placeholder="Masukkan platform" required> -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="platform" name="platform[]" value="TikTok">
+                                <label class="custom-control-label" for="platform">TikTok</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="platform" name="platform[]" value="Instagram">
+                                <label class="custom-control-label" for="platform">Instagram</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="tiktok_link" class="d-block">Tiktok Link</label>
