@@ -26,11 +26,8 @@
                                 <th class="wd-10p">Nama</th>
                                 <th class="wd-10p">Whatsapp</th>
                                 <th class="wd-10p">Platform</th>
-                                <th class="wd-10p">Tiktok Link</th>
-                                <th class="wd-10p">Instagram Link</th>
                                 <th class="wd-10p">Followers Instagram</th>
                                 <th class="wd-10p">Followers Tiktok</th>
-                                <th class="wd-10p">Produk</th>
                                 <th class="wd-10p">Keterangan</th>
                                 <th class="wd-10p">Aksi</th>
                             </tr>
@@ -46,14 +43,11 @@
                                     <td><?= $kols[$i]['nama']; ?></td>
                                     <td><?= $kols[$i]['whatsapp']; ?></td>
                                     <td><?= $kols[$i]['platform']; ?></td>
-                                    <td><?= $kols[$i]['tiktok_link']; ?></td>
-                                    <td><?= $kols[$i]['instagram_link']; ?></td>
                                     <td><?= $kols[$i]['followers_instagram'];  ?></td>
                                     <td><?= $kols[$i]['followers_tiktok']; ?></td>
-                                    <td><?= $kols[$i]['product']; ?></td>
                                     <td><?= $kols[$i]['keterangan']; ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-xs btn-warning" onClick="window.location='<?= base_url(); ?>admin/edit_kol/<?= $kols[$i]['id']; ?>';">
+                                        <button type="button" class="btn btn-xs btn-warning tx-white" onClick="window.location='<?= base_url(); ?>admin/edit_kol/<?= $kols[$i]['id']; ?>';">
                                             Edit
                                         </button>
                                         <button type="button" class="btn btn-xs btn-danger" onClick="window.location='<?= base_url(); ?>admin/delete_kol/<?= $kols[$i]['id']; ?>';">
