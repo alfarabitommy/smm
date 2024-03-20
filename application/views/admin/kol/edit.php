@@ -39,32 +39,51 @@ $uploadDate2 = Date('Y-m-d\TH:i', strtotime($data[0]['tanggal_visit']));
                     </div>
                     <div class="form-group col-md-8">
                         <label for="status_kol" class="d-block">Status KOL</label>
+                        <?php
+                            if($data[0]['status_kol'] == "sudah_pernah_kerjasama"){
+                        ?>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input" checked>
-                            <label class="custom-control-label" for="customRadio1">Sudah pernah kerjasama</label>
+                            <input type="radio" id="status_kol" name="status_kol" value="sudah_pernah_kerjasama" checked>
+                            <label class="label" for="customRadio1">Sudah pernah kerjasama</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio2">Belum pernah kerjasama</label>
+                            <input type="radio" id="status_kol" name="status_kol" value="belum_pernah_kerjasama">
+                            <label class="label" for="customRadio2">Belum pernah kerjasama</label>
                         </div>
+                        <?php } else { ?>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" id="status_kol" name="status_kol" value="sudah_pernah_kerjasama">
+                            <label class="label" for="customRadio1">Sudah pernah kerjasama</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="status_kol" name="status_kol" value="belum_pernah_kerjasama" checked>
+                            <label class="label" for="customRadio2">Belum pernah kerjasama</label>
+                        </div>
+                        <?php } ?>    
                     </div>
                     <div class="form-group col-md-8">
                         <label for="status" class="d-block">Status</label>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio3" name="customRadio2" class="custom-control-input" checked>
-                            <label class="custom-control-label" for="customRadio3">Listing</label>
+                        <?php
+                            $sts1 = ($data[0]['status'] == 'listing') ? 'checked' : '';
+                            $sts2 = ($data[0]['status'] == 'komunikasi') ? 'checked' : '';
+                            $sts3 = ($data[0]['status'] == 'kirim_produk') ? 'checked' : '';
+                            $sts4 = ($data[0]['status'] == 'posting') ? 'checked' : '';
+                        ?>
+                        <div class="custom-control">
+                            <input type="radio" id="status" name="status" value="listing" <?= $sts1 ?>>
+                            <label class="label" for="customRadio3">Listing</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio4" name="customRadio2" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio4">Komunikasi</label>
+                            <input type="radio" id="status" name="status" value="komunikasi" <?= $sts2 ?>>
+                            <label class="label" for="customRadio4">Komunikasi</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio5" name="customRadio2" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio5">Kirim Produk</label>
+                            <input type="radio" id="status" name="status" value="kirim_produk" <?= $sts3 ?>>
+                            <label class="label" for="customRadio5">Kirim Produk</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="customRadio6" name="customRadio2" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadio6">Posting</label>
+                            <input type="radio" id="status" name="status" value="posting" <?= $sts4 ?>>
+                            <label class="label" for="customRadio6">Posting</label>
                         </div>
                     </div>
                     <div class="form-group col-md-8">
