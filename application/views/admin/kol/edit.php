@@ -26,8 +26,8 @@ $uploadDate2 = Date('Y-m-d\TH:i', strtotime($data[0]['tanggal_visit']));
                 <form action="<?= base_url(); ?>admin/proses_edit_kol" enctype="multipart/form-data" method="post" data-parsley-validate>
                     <input type="hidden" name="id" value="<?= $data[0]['id']; ?>">
                     <div class="form-group col-md-8">
-                        <label for="name" class="d-block">Nama KOL</label>
-                        <input name="name" type="text" class="form-control" value="<?= $data[0]['nama']; ?>" required>
+                        <label for="nama" class="d-block">Nama KOL</label>
+                        <input name="nama" type="text" class="form-control" value="<?= $data[0]['nama']; ?>" required>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="username" class="d-block">Username</label>
