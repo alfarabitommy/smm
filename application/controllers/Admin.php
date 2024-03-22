@@ -32,8 +32,13 @@ class Admin extends CI_Controller
 				'access' => $data['log'][0]['access']
 			);
 			$this->session->set_userdata($newdata);
-
-			redirect(base_url() . 'admin/dashboard');
+			
+			if ($data['log'][0]['access'] == 'live') {
+				redirect(base_url() . 'admin/live');
+			} else {
+				redirect(base_url() . 'admin/dashboard');
+			}
+			
 		} else {
 			$this->session->set_flashdata('login_error', 'Email atau password salah');
 			redirect(base_url() . 'admin');
@@ -53,6 +58,7 @@ class Admin extends CI_Controller
 		$t['kol1'] = $this->iklans->getakumulasikols1();
 		$t['kol2'] = $this->iklans->getakumulasikols2();
 		$t['info'] = $this->session->userdata('username');
+		$t['role'] = $this->session->userdata('access');
 		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
 		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
 		$a['content'] =  $this->load->view('admin/dashboard/content', $t, true);
@@ -77,7 +83,10 @@ class Admin extends CI_Controller
 		echo json_encode($data);
 	}
 
-	// controller panel untuk ads/iklan
+	/**
+	 * * Controller panel untuk ads/iklan
+	 * ! Tempatkan semua iklan di controller ini
+	 */
 	public function iklan()
 	{
 		$this->load->model('Admin_model', 'iklans');
@@ -144,7 +153,10 @@ class Admin extends CI_Controller
 
 		redirect(base_url() . 'admin/iklan');
 	}
-	// ends controller function untuk ads/iklan
+	/**
+	 * * End Controller panel untuk ads/iklan
+	 * ! Tempatkan semua iklan di controller ini
+	 */
 
 	// Start controller function untuk KOL 
 	public function kol()
@@ -294,6 +306,79 @@ class Admin extends CI_Controller
 		redirect(base_url() . 'admin/products');
 	}
 	// End controlloer function untuk master produk
+
+	/**
+	 * * Start Modul Live
+	 */
+	public function live()
+	{
+		$this->load->model('Admin_model', 'live');
+		$t['lives'] = $this->live->getalllives();
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
+		$a['content'] =  $this->load->view('admin/live/content', $t, true);
+
+		$page = $this->load->view('admin/master', $a);
+
+		return $page;
+	}
+
+	public function add_live()
+	{
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
+		$a['content'] =  $this->load->view('admin/live/add', $t, true);
+
+		$page = $this->load->view('admin/master', $a);
+
+		return $page;
+	}
+
+	public function proses_add_live()
+	{
+		$this->load->model('Admin_model', 'live');
+		$this->live->proses_add_live();
+
+		redirect(base_url() . 'admin/live');
+	}
+
+	public function edit_live()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->model('Admin_model', 'live');
+
+		$t['data'] = $this->live->select_live($id);
+		$t['info'] = $this->session->userdata('username');
+		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
+		$a['footer'] =  $this->load->view('admin/layout/footer', null, true);
+		$a['content'] =  $this->load->view('admin/live/edit', $t, true);
+
+		$page = $this->load->view('admin/master', $a);
+
+		return $page;
+	}
+
+	public function proses_edit_live()
+	{
+		$this->load->model('Admin_model', 'live');
+		$this->live->proses_edit_live();
+
+		redirect(base_url() . 'admin/live');
+	}
+
+	public function delete_live()
+	{
+		$id = $this->uri->segment(3);
+		$this->load->model('Admin_model', 'live');
+		$this->live->proses_hapus_live($id);
+
+		redirect(base_url() . 'admin/live');
+	}
+	/**
+	 * ! End modul Live
+	 */
 
 	public function edit_about()
 	{

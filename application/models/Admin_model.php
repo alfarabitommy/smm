@@ -342,6 +342,100 @@ class Admin_model extends CI_Model
 		$this->db->insert('customers', $data);
 	}
 
+	/**
+	 * * Model untuk Modul Live
+	 */
+
+	 public function getalllives()
+	 {
+		 $sql = $this->db->query("select * from tbl_lives");
+		 $data = $sql->result_array();
+ 
+		 return $data;
+	 }
+
+	 public function proses_add_live()
+	{
+		$date = date('Y-m-d H:i:s');
+		$start = str_replace("T", " ", $this->input->post('tanggal_live'));
+		$foto = str_replace(" ", "_", $_FILES['photo']['name']);
+		if (!empty($foto)) {
+			$tujuan_file = realpath(APPPATH . '../assets/screenshots/');
+			$konfigurasi = array(
+				'allowed_types' => 'jpg|jpeg|png|pdf|bmp|JPG',
+				'upload_path' => $tujuan_file,
+				'remove_spaces' => TRUE
+			);
+			$this->load->library('upload', $konfigurasi);
+			$this->upload->do_upload('photo');
+			$this->upload->data();
+			$data_file = array(
+				'nama' 					=> $this->input->post('nama'),
+				'penonton' 				=> $this->input->post('penonton'),
+				'shift' 				=> $this->input->post('shift'),
+				'likes' 				=> $this->input->post('likes'),
+				'gifts' 				=> $this->input->post('gifts'),
+				'share' 				=> $this->input->post('share'),
+				'tanggal' 				=> $start,
+				'created_at' 			=> $date,
+				'screenshot' 			=> $foto
+			);
+			$this->db->insert('tbl_lives', $data_file);
+		} else {
+			$data_file = array(
+				'nama' 					=> $this->input->post('nama'),
+				'penonton' 				=> $this->input->post('penonton'),
+				'shift' 				=> $this->input->post('shift'),
+				'likes' 				=> $this->input->post('likes'),
+				'gifts' 				=> $this->input->post('gifts'),
+				'share' 				=> $this->input->post('share'),
+				'tanggal' 				=> $start,
+				'created_at' 			=> $date
+			);
+			
+			$this->db->insert('tbl_lives', $data_file);
+		}
+	}
+
+	public function select_live($id)
+	{
+		$sql = $this->db->query("select * from tbl_lives where id='" . $id . "'");
+		$data = $sql->result_array();
+
+		return $data;
+	}
+
+	public function proses_edit_live()
+	{
+		$id = $this->input->post('id');
+		$date = date('Y-m-d H:i:s');
+
+		$start = str_replace("T", " ", $this->input->post('tanggal_live'));
+		$data_file = array(
+			'nama' 					=> $this->input->post('nama'),
+			'penonton' 				=> $this->input->post('penonton'),
+			'shift' 				=> $this->input->post('shift'),
+			'likes' 				=> $this->input->post('likes'),
+			'gifts' 				=> $this->input->post('gifts'),
+			'share' 				=> $this->input->post('share'),
+			'tanggal' 				=> $start,
+			'updated_at' 			=> $date
+		);
+
+		$this->db->where('id', $id);
+		$this->db->update('tbl_lives', $data_file);
+	}
+	
+	public function proses_hapus_live($id)
+	{
+		$sql = $this->db->query("delete from tbl_lives where id='" . $id . "'");
+		return $sql;
+	}
+	 /**
+	 * ! End Model untuk Modul Live
+	 * 0897 93 69 049
+	 */
+
 	// ABOUT
 	public function proses_edit_about()
 	{
