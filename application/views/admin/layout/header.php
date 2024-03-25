@@ -60,21 +60,29 @@
             </ul>
           </div>
         </div><!-- aside-loggedin -->
-        <?php $uri = $this->uri->segment(2); ?>
+        <?php 
+        $uri = $this->uri->segment(2);
+        if($info == 'admin' || $info == 'user'){ 
+        ?>
         <ul class="nav nav-aside">
           <li class="nav-label">Menu</li>
           <li class="nav-item <?= ($uri=='dashboard')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/dashboard/" class="nav-link"><i data-feather="home"></i> <span>Dashboard</span></a></li>
           <li class="nav-item <?= ($uri=='iklan' || $uri=='add_iklan' || $uri=='edit_iklan')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/iklan/" class="nav-link"><i data-feather="tv"></i> <span>Iklan / Ads</span></a></li>
           <li class="nav-item <?= ($uri=='kol' || $uri=='view_kol' || $uri=='add_kol' || $uri=='edit_kol')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/kol/" class="nav-link"><i data-feather="star"></i> <span>KOL</span></a></li>
           <li class="nav-item <?= ($uri=='live')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/live/" class="nav-link"><i data-feather="video"></i> <span>Live</span></a></li>
-          <!-- <li class="nav-item <?= ($uri=='whatsnew')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/whatsnew/" class="nav-link"><i data-feather="send"></i> <span>What's New</span></a></li>
-          <li class="nav-item <?= ($uri=='videos')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/videos/" class="nav-link"><i data-feather="video"></i> <span>Videos</span></a></li>
-          <li class="nav-item <?= ($uri=='acnefacts')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/acnefacts/" class="nav-link"><i data-feather="layout"></i> <span>Acnefacts</span></a></li>
-          <li class="nav-item <?= ($uri=='customers')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/customers/" class="nav-link"><i data-feather="users"></i> <span>Customers</span></a></li>
-          <li class="nav-item <?= ($uri=='sliders')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/messages/" class="nav-link"><i data-feather="inbox"></i> <span>Messages</span></a></li> -->
+          <!-- <li class="nav-item <?//= ($uri=='whatsnew')? 'active':''; ?>"><a href="<?//= base_url(); ?>admin/whatsnew/" class="nav-link"><i data-feather="send"></i> <span>What's New</span></a></li>
+          <li class="nav-item <//?= ($uri=='videos')? 'active':''; ?>"><a href="<?//= base_url(); ?>admin/videos/" class="nav-link"><i data-feather="video"></i> <span>Videos</span></a></li>
+          <li class="nav-item <//?= ($uri=='acnefacts')? 'active':''; ?>"><a href="<?//= base_url(); ?>admin/acnefacts/" class="nav-link"><i data-feather="layout"></i> <span>Acnefacts</span></a></li>
+          <li class="nav-item <//?= ($uri=='customers')? 'active':''; ?>"><a href="<?//= base_url(); ?>admin/customers/" class="nav-link"><i data-feather="users"></i> <span>Customers</span></a></li>
+          <li class="nav-item <//?= ($uri=='sliders')? 'active':''; ?>"><a href="<?//= base_url(); ?>admin/messages/" class="nav-link"><i data-feather="inbox"></i> <span>Messages</span></a></li> -->
           <li class="nav-label mg-t-25">Master Data</li>
           <li class="nav-item <?= ($uri=='master-produk')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/master-produk/" class="nav-link"><i data-feather="database"></i> <span>Master Produk</span></a></li>
         </ul>
+        <?php }else{ ?>
+          <ul class="nav nav-aside">
+            <li class="nav-item <?= ($uri=='live')? 'active':''; ?>"><a href="<?= base_url(); ?>admin/live/" class="nav-link"><i data-feather="video"></i> <span>Live</span></a></li>
+        </ul>
+        <?php } ?>
       </div>
     </aside>
 
