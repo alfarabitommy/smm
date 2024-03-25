@@ -166,7 +166,7 @@
             <div class="card card-body">
               <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Penonton</h6>
               <div class="d-flex d-lg-block d-xl-flex align-items-end">
-                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">7.167</h4>
+                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $lives[0]['jumlah_penonton'];?></h4>
               </div>
               <div class="chart-three" style="font-size: 7pt; font-style: italic;">
                 <span>*Jumlah total penonton Live</span>
@@ -177,7 +177,7 @@
             <div class="card card-body">
               <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Share</h6>
               <div class="d-flex d-lg-block d-xl-flex align-items-end">
-                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">216</h4>
+                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $lives[0]['jumlah_share'];?></h4>
               </div>
               <div class="chart-three" style="font-size: 7pt; font-style: italic;">
                 <span>*Jumlah total Share</span>
@@ -191,7 +191,7 @@
             <div class="card card-body">
               <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Like</h6>
               <div class="d-flex d-lg-block d-xl-flex align-items-end">
-                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">253.867</h4>
+                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $lives[0]['jumlah_like'];?></h4>
               </div>
               <div class="chart-three" style="font-size: 7pt; font-style: italic;">
                 <span>*Jumlah total Like</span>
@@ -202,7 +202,7 @@
             <div class="card card-body">
               <h6 class="tx-uppercase tx-11 tx-spacing-1 tx-color-02 tx-semibold mg-b-8">Berlian</h6>
               <div class="d-flex d-lg-block d-xl-flex align-items-end">
-                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">44</h4>
+                <h4 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1"><?= $lives[0]['jumlah_gift'];?></h4>
               </div>
               <div class="chart-three" style="font-size: 7pt; font-style: italic;">
                 <span>*Jumlah total Berlian</span>

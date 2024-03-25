@@ -58,6 +58,20 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
+	public function gettotallivetiktok()
+	{
+		$sql = $this->db->query("select nama,sum(penonton) as jumlah_live from tbl_lives group by nama");
+		$data = $sql->result_array();
+		return $data;
+	}
+
+	public function gettotallive()
+	{
+		$sql = $this->db->query("select sum(penonton) as jumlah_penonton,sum(share) as jumlah_share,sum(likes) as jumlah_like, sum(gifts) as jumlah_gift from tbl_lives");
+		$data = $sql->result_array();
+		return $data;
+	}
+
 	// model untuk panel iklan
 	public function getalliklans()
 	{

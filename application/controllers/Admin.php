@@ -57,6 +57,7 @@ class Admin extends CI_Controller
 		$t['iklans'] = $this->iklans->getakumulasiiklans();
 		$t['kol1'] = $this->iklans->getakumulasikols1();
 		$t['kol2'] = $this->iklans->getakumulasikols2();
+		$t['lives'] = $this->iklans->gettotallive();
 		$t['info'] = $this->session->userdata('username');
 		$t['role'] = $this->session->userdata('access');
 		$a['header'] =  $this->load->view('admin/layout/header', $t, true);
@@ -83,6 +84,13 @@ class Admin extends CI_Controller
 		echo json_encode($data);
 	}
 
+	public function api_total_live_tiktok()
+	{
+		$this->load->model('Admin_model', 'total_live');
+		$data = $this->total_live->gettotallivetiktok();
+		echo json_encode($data);
+	}
+	
 	/**
 	 * * Controller panel untuk ads/iklan
 	 * ! Tempatkan semua iklan di controller ini

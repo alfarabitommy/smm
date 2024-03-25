@@ -548,37 +548,48 @@
 
         })
 
-  const x2Values = ['Yesi', 'Maulinda', 'Dhea', 'Dika'];
-  const y2Values = [10, 8, 8, 9];
-  const barColors2 = ["#B5C0D0", "#8E7AB5", "#070F2B", "#8CB9BD"];
 
-  new Chart("myChart2", {
-    type: "bar",
-    data: {
-      labels: x2Values,
-      datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: barColors2,
-        borderColor: "#86A7FC",
-        data: y2Values
-      }]
-    },
-    options: {
-      legend: {
-        display: false
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            min: 0,
-            max: 30
+        fetch('http://localhost/smm/admin/api_total_live_tiktok')
+        .then(rs => rs.json())
+        .then((rrs) => {
+          const x2Values = [];
+          const y2Values = [];
+          const barColors2 = ["#B5C0D0", "#8E7AB5", "#070F2B", "#8CB9BD"];
+          for (var j = 0; j < rrs.length; j++) {
+            x2Values.push(rrs[j]?.nama);
+            y2Values.push(rrs[j]?.jumlah_live);
           }
-        }],
-      }
-    }
-  });
 
+          new Chart("myChart2", {
+            type: "bar",
+            data: {
+              labels: x2Values,
+              datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: barColors2,
+                borderColor: "#86A7FC",
+                data: y2Values
+              }]
+            },
+            options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    max: 1000
+                  }
+                }],
+              }
+            }
+          });
+
+        });        
+
+  
   const x3Values = ['TikTok', 'Instagram'];
   const y3Values = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
   const barColors3 = ["#EE1D52", "#9F70FD"];
