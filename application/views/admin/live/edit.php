@@ -41,6 +41,10 @@ $start=Date('Y-m-d\TH:i',strtotime($data[0]['tanggal']));
                         <input name="shift" type="text" class="form-control" value="<?= $data[0]['shift'];?>" disabled>
                     </div>
                     <div class="form-group col-md-8">
+                        <label for="penjualan" class="d-block">Penjualan</label>
+                        <input name="penjualan" type="text" class="form-control" value="<?= $data[0]['penjualan'];?>" disabled>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="likes" class="d-block">Likes</label>
                         <input name="likes" type="text" class="form-control" value="<?= $data[0]['likes'];?>" disabled>
                     </div>

@@ -37,6 +37,10 @@
                         <input name="shift" type="text" class="form-control" placeholder="Masukkan info shift" required>
                     </div>
                     <div class="form-group col-md-8">
+                        <label for="penjualan" class="d-block">Penjualan</label>
+                        <input name="penjualan" type="text" class="form-control" placeholder="Masukkan info penjualan" required>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="likes" class="d-block">Likes</label>
                         <input name="likes" type="text" class="form-control" placeholder="Masukkan jumlah likes" required>
                     </div>

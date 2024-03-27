@@ -25,6 +25,7 @@
                                 <th class="wd-5p">No</th>
                                 <th class="wd-10p">Name</th>
                                 <th class="wd-10p">Shift</th>
+                                <th class="wd-10p">Penjualan</th>
                                 <th class="wd-10p">Penonton</th>
                                 <th class="wd-10p">Likes</th>
                                 <th class="wd-10p">Gifts</th>
@@ -43,6 +44,7 @@
                                     <td><?= $no; ?></td>
                                     <td><?= $lives[$i]['nama']; ?></td>
                                     <td><?= $lives[$i]['shift']; ?></td>
+                                    <td><?= $lives[$i]['penjualan']; ?></td>
                                     <td><?= $lives[$i]['penonton']; ?></td>
                                     <td><?= $lives[$i]['likes']; ?></td>
                                     <td><?= $lives[$i]['gifts']; ?></td>
